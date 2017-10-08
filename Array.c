@@ -42,4 +42,3 @@ int* createRandomArray(size_t length)
 
     return array;
 }
-
