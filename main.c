@@ -2,8 +2,12 @@
 #include <stdio.h>
 #include <time.h>
 #include "Array.h"
+#include "Sort.h"
 #include "InsertionSort.h"
 #include "QuickSort.h"
+#include "RandomizedQuickSort.h"
+
+
 
 
 /* Prototypes */
@@ -34,7 +38,14 @@ double cpuTimeQuickSort(int* array, size_t length)
 	stop = clock();
 	return ((double)(stop - start)) / CLOCKS_PER_SEC;
 }
-
+double cpuTimeRandomizedQuickSort(int* array, size_t length)
+{
+	clock_t start, stop;
+	start = clock();
+	RandomizedQuickSort(array, 0, length - 1);
+	stop = clock();
+	return ((double)(stop - start)) / CLOCKS_PER_SEC;
+}
 
 /* ------------------------------------------------------------------------- *
 * Main
@@ -52,23 +63,29 @@ int main(void)
 	{
 		arrays_p[i] = createRandomArray(sizeArray[i]);
 	}
-
-	printf("QuickSort\n");
-	for (i = 0; i < 5; i++)
-	{
-		printf("\tSize of the array: %d\n", (int)sizeArray[i]);
-		double sec = cpuTimeQuickSort(arrays_p[i], sizeArray[i]);
-		printf("\t\tCPU Time: %.10f\n", sec);
-	}
-
-	printf("InsertionSort\n");
+	/*printf("InsertionSort\n");
 	for (i = 0; i < 5; i++)
 	{
 		printf("\tSize of the array: %d\n", (int)sizeArray[i]);
 		double sec = cpuTimeInsertionSort(arrays_p[i], sizeArray[i]);
 		printf("\t\tCPU Time: %.10f\n", sec);
-	}
+	}*/
 
+	/*printf("QuickSort\n");
+	for (i = 0; i < 5; i++)
+	{
+		printf("\tSize of the array: %d\n", (int)sizeArray[i]);
+		double sec = cpuTimeQuickSort(arrays_p[i], sizeArray[i]);
+		printf("\t\tCPU Time: %.10f\n", sec);
+	}*/
+
+	printf("RandomizedQuickSort\n");
+	for (i = 0; i < 5; i++)
+	{
+		printf("\tSize of the array: %d\n", (int)sizeArray[i]);
+		double sec = cpuTimeRandomizedQuickSort(arrays_p[i], sizeArray[i]);
+		printf("\t\tCPU Time: %.10f\n", sec);
+	}
 	free(array);
 
 	getchar();
