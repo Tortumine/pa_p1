@@ -45,6 +45,21 @@ double cpuTimeRandomizedQuickSort(int* array, size_t length)
 	stop = clock();
 	return ((double)(stop - start)) / CLOCKS_PER_SEC;
 }
+void clearBuffer()
+{
+	int c = 0;
+	while (c != '\n' && c != EOF)
+	{
+		c = getchar();
+	}
+}
+void initTmpArrays(int* arrays_tmp,int* arrays_p,int* sizeArray)
+{
+	for (int i = 0; i<5; i++)
+	{
+		memcpy(arrays_tmp[i], arrays_p[i], sizeArray[i] * sizeof(int));
+	}
+}
 
 /* ------------------------------------------------------------------------- *
 * Main
@@ -53,33 +68,30 @@ int main(void)
 {
 	srand((unsigned int) time(NULL));//Use an integer seed to get a fix sequence
 	char tmp;
-	int* array = NULL;
-	int* array_copy = NULL;
+	int *arrays_p[5];
+	int *arrays_tmp[5];
 	int i = 0;
 	size_t sizeArray[5] = { 100,1000,10000,100000, 1000000};
 	
-	int *arrays_p[5];
-	int *arrays_tmp[5];
+
 	
 	for (i = 0; i < 5; i++)
 	{
 		arrays_p[i] = createRandomArray(sizeArray[i]);
 		arrays_tmp[i] = malloc(sizeof(int)*sizeArray[i]);
-	}	
+	}
 
 	int e = 1;
 	while (e == 1)
 	{
-		// TODO: this printf is called 2 tilmes after the first run
 		printf("Chose benchmark\n1 : Insertion\n2 : QuickSort\n3 : RandomisedQuickSort\n0 : Quit\n\n");
-		tmp = getchar();
+		scanf("%c",&tmp);
+		clearBuffer();
 		switch (tmp)
 		{
 		case '1':
-			for (i = 0; i<5; i++)
-			{
-				memcpy(arrays_tmp[i], arrays_p[i], sizeArray[i] * sizeof(int));
-			}
+			initTmpArrays(arrays_tmp, arrays_p, sizeArray);
+
 
 			printf("----------------------------------------\n");
 			printf("InsertionSort\n");
@@ -91,10 +103,7 @@ int main(void)
 			}
 			break;
 		case '2':
-			for (i = 0; i<5; i++)
-			{
-				memcpy(arrays_tmp[i], arrays_p[i], sizeArray[i] * sizeof(int));
-			}
+			initTmpArrays(arrays_tmp, arrays_p, sizeArray);
 
 			printf("----------------------------------------\n");
 			printf("QuickSort\n");
@@ -106,10 +115,7 @@ int main(void)
 			}
 			break;
 		case '3':
-			for (i = 0; i<5; i++)
-			{
-				memcpy(arrays_tmp[i], arrays_p[i], sizeArray[i] * sizeof(int));
-			}
+			initTmpArrays(arrays_tmp, arrays_p, sizeArray);
 
 			printf("----------------------------------------\n");
 			printf("RandomizedQuickSort\n");
@@ -128,6 +134,8 @@ int main(void)
 		}
 	}
 	
-	free(array);
+	free(arrays_p);
+	free(arrays_tmp);
 	return 0;
 }
+
