@@ -6,8 +6,7 @@
 #include "InsertionSort.h"
 #include "QuickSort.h"
 #include "RandomizedQuickSort.h"
-
-
+#include <string.h>
 
 
 /* Prototypes */
@@ -53,41 +52,88 @@ double cpuTimeRandomizedQuickSort(int* array, size_t length)
 int main(void)
 {
 	srand((unsigned int) time(NULL));//Use an integer seed to get a fix sequence
-
+	char tmp;
 	int* array = NULL;
 	int* array_copy = NULL;
 	int i = 0;
 	size_t sizeArray[5] = { 100,1000,10000,100000, 1000000};
+	
 	int *arrays_p[5];
+	int *arrays_tmp[5];
+	
 	for (i = 0; i < 5; i++)
 	{
 		arrays_p[i] = createRandomArray(sizeArray[i]);
+		arrays_tmp[i] = malloc(sizeof(int)*sizeArray[i]);
 	}
-	/*printf("InsertionSort\n");
-	for (i = 0; i < 5; i++)
-	{
-		printf("\tSize of the array: %d\n", (int)sizeArray[i]);
-		double sec = cpuTimeInsertionSort(arrays_p[i], sizeArray[i]);
-		printf("\t\tCPU Time: %.10f\n", sec);
-	}*/
 
-	/*printf("QuickSort\n");
-	for (i = 0; i < 5; i++)
+	for(i=0;i<5;i++)
 	{
-		printf("\tSize of the array: %d\n", (int)sizeArray[i]);
-		double sec = cpuTimeQuickSort(arrays_p[i], sizeArray[i]);
-		printf("\t\tCPU Time: %.10f\n", sec);
-	}*/
-
-	printf("RandomizedQuickSort\n");
-	for (i = 0; i < 5; i++)
-	{
-		printf("\tSize of the array: %d\n", (int)sizeArray[i]);
-		double sec = cpuTimeRandomizedQuickSort(arrays_p[i], sizeArray[i]);
-		printf("\t\tCPU Time: %.10f\n", sec);
+		memcpy(arrays_tmp[i], arrays_p[i], sizeArray[i] * sizeof(int));
 	}
+	
+
+	int e = 1;
+	while (e == 1)
+	{
+		// TODO: this printf is called 2 tilmes after the first run
+		printf("Chose benchmark\n1 : Insertion\n2 : QuickSort\n3 : RandomisedQuickSort\n0 : Quit\n\n");
+		tmp = getchar();
+		switch (tmp)
+		{
+		case '1':
+			for (i = 0; i<5; i++)
+			{
+				memcpy(arrays_tmp[i], arrays_p[i], sizeArray[i] * sizeof(int));
+			}
+
+			printf("----------------------------------------\n");
+			printf("InsertionSort\n");
+			for (i = 0; i < 5; i++)
+			{
+				printf("\tSize of the array: %d\n", (int)sizeArray[i]);
+				double sec = cpuTimeInsertionSort(arrays_tmp[i], sizeArray[i]);
+				printf("\t\tCPU Time: %.10f\n", sec);
+			}
+			break;
+		case '2':
+			for (i = 0; i<5; i++)
+			{
+				memcpy(arrays_tmp[i], arrays_p[i], sizeArray[i] * sizeof(int));
+			}
+
+			printf("----------------------------------------\n");
+			printf("QuickSort\n");
+			for (i = 0; i < 5; i++)
+			{
+				printf("\tSize of the array: %d\n", (int)sizeArray[i]);
+				double sec = cpuTimeQuickSort(arrays_tmp[i], sizeArray[i]);
+				printf("\t\tCPU Time: %.10f\n", sec);
+			}
+			break;
+		case '3':
+			for (i = 0; i<5; i++)
+			{
+				memcpy(arrays_tmp[i], arrays_p[i], sizeArray[i] * sizeof(int));
+			}
+
+			printf("----------------------------------------\n");
+			printf("RandomizedQuickSort\n");
+			for (i = 0; i < 5; i++)
+			{
+				printf("\tSize of the array: %d\n", (int)sizeArray[i]);
+				double sec = cpuTimeRandomizedQuickSort(arrays_tmp[i], sizeArray[i]);
+				printf("\t\tCPU Time: %.10f\n", sec);
+			}
+			break;
+		case '0':
+			e = 0;
+			break;
+		default:
+			break;
+		}
+	}
+	
 	free(array);
-
-	getchar();
 	return 0;
 }
