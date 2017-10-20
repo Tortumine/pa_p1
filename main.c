@@ -65,13 +65,7 @@ int main(void)
 	{
 		arrays_p[i] = createRandomArray(sizeArray[i]);
 		arrays_tmp[i] = malloc(sizeof(int)*sizeArray[i]);
-	}
-
-	for(i=0;i<5;i++)
-	{
-		memcpy(arrays_tmp[i], arrays_p[i], sizeArray[i] * sizeof(int));
-	}
-	
+	}	
 
 	int e = 1;
 	while (e == 1)
