@@ -4,12 +4,12 @@
 * ========================================================================= */
 
 #include <stddef.h>
-#include "QuickSort.h"
+#include "Sort.h"
 
 
 void QuickSort(int* array, int left, int right)
 {
-	unsigned int mid=0;
+	int mid=0;
 	if(right>left)
 	{
 		mid = Partition(array,left,right);
