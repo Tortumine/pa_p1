@@ -4,8 +4,7 @@
 * ========================================================================= */
 
 #include <stddef.h>
-#include "QuickSort.h"
-#include "RandomizedQuickSort.h"
+#include "Sort.h"
 #include <stdlib.h>
 
 

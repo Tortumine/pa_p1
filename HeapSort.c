@@ -5,7 +5,7 @@
 * ========================================================================= */
 
 #include <stddef.h>
-#include "HeapSort.h"
+#include "Sort.h"
 
 
 void MaxHeapify(int* array, int heapsize, int i)

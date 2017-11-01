@@ -4,7 +4,7 @@
 * ========================================================================= */
 
 #include <stddef.h>
-#include "QuickSort.h"
+#include "Sort.h"
 
 
 void QuickSort(int* array, int left, int right)

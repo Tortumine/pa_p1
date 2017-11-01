@@ -3,10 +3,6 @@
 #include <time.h>
 #include "Array.h"
 #include "Sort.h"
-#include "InsertionSort.h"
-#include "QuickSort.h"
-#include "RandomizedQuickSort.h"
-#include "HeapSort.h"
 #include <string.h>
 
 
@@ -151,13 +147,6 @@ int main(void)
 				printf("\tSize of the array: %d\n", (int)sizeArray[i]);
 				double sec = cpuTimeRandomizedQuickSort(arrays_tmp[i], sizeArray[i]);
 				printf("\t\tCPU Time: %.10f\n", sec);
-				if (i == 0)
-				{
-					for (int j = 0; j < 5; j++)
-					{
-						printf("%d\n", arrays_tmp[i][j]);
-					}
-				}
 			}
 			break;
 		case '4':
@@ -173,13 +162,6 @@ int main(void)
 				printf("\tSize of the array: %d\n", (int)sizeArray[i]);
 				double sec = cpuTimeHeapSort(arrays_tmp[i], sizeArray[i]);
 				printf("\t\tCPU Time: %.10f\n", sec);
-				if (i == 0)
-				{
-					for (int j = 0; j < 99; j++)
-					{
-						printf("%d\n", arrays_tmp[i][j]);
-					}
-				}
 			}
 			break;
 		case '0':
@@ -188,8 +170,7 @@ int main(void)
 		default:
 			break;
 		}
-	}
-	
+	}	
 	free(arrays_p);
 	free(arrays_tmp);
 	return 0;
