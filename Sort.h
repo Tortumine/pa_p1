@@ -50,4 +50,13 @@ void HeapSort(int* array, int lenght);
 void BuildMaxHeap(int* array, int lenght);
 void MaxHeapify(int* array, int heapsize, int i);
 
+/* ------------------------------------------------------------------------- *
+* GSort an array of integers.
+*
+* PARAMETERS
+* array        The array to sort
+* length       Number of elements in the array
+* ------------------------------------------------------------------------- */
+void GSort(int* array, int p, int r);
+
 #endif // !_SORT_H_

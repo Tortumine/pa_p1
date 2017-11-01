@@ -50,7 +50,14 @@ double cpuTimeHeapSort(int* array, size_t length)
 	stop = clock();
 	return ((double)(stop - start))/* / CLOCKS_PER_SEC*/;
 }
-
+double cpuTimeGSort(int* array, size_t length)
+{
+	clock_t start, stop;
+	start = clock();
+	GSort(array,0, length - 1);
+	stop = clock();
+	return ((double)(stop - start))/* / CLOCKS_PER_SEC*/;
+}
 
 void clearBuffer()
 {
@@ -91,7 +98,7 @@ int main(void)
 	int e = 1;
 	while (e == 1)
 	{
-		printf("Chose benchmark\n1 : Insertion\n2 : QuickSort\n3 : RandomisedQuickSort\n4 : HeapSort\n0 : Quit\n\n");
+		printf("Chose benchmark\n1 : Insertion\n2 : QuickSort\n3 : RandomisedQuickSort\n4 : HeapSort\n5 : GSort\n0 : Quit\n\n");
 		scanf("%c",&tmp);
 		clearBuffer();
 		switch (tmp)
@@ -161,6 +168,21 @@ int main(void)
 			{
 				printf("\tSize of the array: %d\n", (int)sizeArray[i]);
 				double sec = cpuTimeHeapSort(arrays_tmp[i], sizeArray[i]);
+				printf("\t\tCPU Time: %.10f\n", sec);
+			}
+			break;
+		case '5':
+			//initTmpArrays(arrays_tmp, arrays_p, sizeArray);
+			for (int i = 0; i<5; i++)
+			{
+				memcpy(arrays_tmp[i], arrays_p[i], sizeArray[i] * sizeof(int));
+			}
+			printf("----------------------------------------\n");
+			printf("GSort\n");
+			for (i = 0; i < 2; i++)
+			{
+				printf("\tSize of the array: %d\n", (int)sizeArray[i]);
+				double sec = cpuTimeGSort(arrays_tmp[i], sizeArray[i]);
 				printf("\t\tCPU Time: %.10f\n", sec);
 			}
 			break;
