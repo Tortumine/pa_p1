@@ -24,7 +24,7 @@ double cpuTimeInsertionSort(int* array, size_t length)
 	start = clock();
 	InsertionSort(array, length);
 	stop = clock();
-	return ((double)(stop - start))/* / CLOCKS_PER_SEC*/;
+	return ((double)(stop - start)) / CLOCKS_PER_SEC;
 }
 double cpuTimeQuickSort(int* array, size_t length)
 {
@@ -32,7 +32,7 @@ double cpuTimeQuickSort(int* array, size_t length)
 	start = clock();
 	QuickSort(array,0, length-1);
 	stop = clock();
-	return ((double)(stop - start))/* / CLOCKS_PER_SEC*/;
+	return ((double)(stop - start)) / CLOCKS_PER_SEC;
 }
 double cpuTimeRandomizedQuickSort(int* array, size_t length)
 {
@@ -40,7 +40,7 @@ double cpuTimeRandomizedQuickSort(int* array, size_t length)
 	start = clock();
 	RandomizedQuickSort(array, 0, length - 1);
 	stop = clock();
-	return ((double)(stop - start))/* / CLOCKS_PER_SEC*/;
+	return ((double)(stop - start)) / CLOCKS_PER_SEC;
 }
 double cpuTimeHeapSort(int* array, size_t length)
 {
@@ -48,7 +48,7 @@ double cpuTimeHeapSort(int* array, size_t length)
 	start = clock();
 	HeapSort(array, length - 1);
 	stop = clock();
-	return ((double)(stop - start))/* / CLOCKS_PER_SEC*/;
+	return ((double)(stop - start)) / CLOCKS_PER_SEC;
 }
 double cpuTimeGSort(int* array, size_t length)
 {
@@ -56,7 +56,7 @@ double cpuTimeGSort(int* array, size_t length)
 	start = clock();
 	GSort(array,0, length - 1);
 	stop = clock();
-	return ((double)(stop - start))/* / CLOCKS_PER_SEC*/;
+	return ((double)(stop - start)) / CLOCKS_PER_SEC;
 }
 
 void clearBuffer()
@@ -82,14 +82,14 @@ int main(void)
 {
 	srand((unsigned int) time(NULL));//Use an integer seed to get a fix sequence
 	char tmp;
-	int *arrays_p[5];
-	int *arrays_tmp[5];
+	int *arrays_p[6];
+	int *arrays_tmp[6];
 	int i = 0;
-	size_t sizeArray[5] = { 100,1000,10000,100000, 1000000};
+	size_t sizeArray[6] = { 10,100,1000,10000,100000, 1000000};
 	
 
 	
-	for (i = 0; i < 5; i++)
+	for (i = 0; i < 6; i++)
 	{
 		arrays_p[i] = createRandomArray(sizeArray[i]);
 		arrays_tmp[i] = malloc(sizeof(int)*sizeArray[i]);
@@ -105,14 +105,14 @@ int main(void)
 		{
 		case '1':
 			//initTmpArrays(arrays_tmp, arrays_p, sizeArray);
-			for (int i = 0; i<5; i++)
+			for (int i = 0; i<6; i++)
 			{
 				memcpy(arrays_tmp[i], arrays_p[i], sizeArray[i] * sizeof(int));
 			}
 
 			printf("----------------------------------------\n");
 			printf("InsertionSort\n");
-			for (i = 0; i < 5; i++)
+			for (i = 0; i < 6; i++)
 			{
 				printf("\tSize of the array: %d\n", (int)sizeArray[i]);
 				double sec = cpuTimeInsertionSort(arrays_tmp[i], sizeArray[i]);
@@ -121,35 +121,28 @@ int main(void)
 			break;
 		case '2':
 			//initTmpArrays(arrays_tmp, arrays_p, sizeArray);
-			for (int i = 0; i<5; i++)
+			for (int i = 0; i<6; i++)
 			{
 				memcpy(arrays_tmp[i], arrays_p[i], sizeArray[i] * sizeof(int));
 			}
 			printf("----------------------------------------\n");
 			printf("QuickSort\n");
-			for (i = 0; i < 5; i++)
+			for (i = 0; i < 6; i++)
 			{
 				printf("\tSize of the array: %d\n", (int)sizeArray[i]);
 				double sec = cpuTimeQuickSort(arrays_tmp[i], sizeArray[i]);
 				printf("\t\tCPU Time: %.10f\n", sec);
-				if (i == 0)
-				{
-					for (int j = 0; j < 5; j++)
-					{
-						printf("%d\n", arrays_tmp[i][j]);
-					}
-				}
 			}
 			break;
 		case '3':
 			//initTmpArrays(arrays_tmp, arrays_p, sizeArray);
-			for (int i = 0; i<5; i++)
+			for (int i = 0; i<6; i++)
 			{
 				memcpy(arrays_tmp[i], arrays_p[i], sizeArray[i] * sizeof(int));
 			}
 			printf("----------------------------------------\n");
 			printf("RandomizedQuickSort\n");
-			for (i = 0; i < 5; i++)
+			for (i = 0; i < 6; i++)
 			{
 				printf("\tSize of the array: %d\n", (int)sizeArray[i]);
 				double sec = cpuTimeRandomizedQuickSort(arrays_tmp[i], sizeArray[i]);
@@ -158,13 +151,13 @@ int main(void)
 			break;
 		case '4':
 			//initTmpArrays(arrays_tmp, arrays_p, sizeArray);
-			for (int i = 0; i<5; i++)
+			for (int i = 0; i<6; i++)
 			{
 				memcpy(arrays_tmp[i], arrays_p[i], sizeArray[i] * sizeof(int));
 			}
 			printf("----------------------------------------\n");
 			printf("HeapSort\n");
-			for (i = 0; i < 5; i++)
+			for (i = 0; i < 6; i++)
 			{
 				printf("\tSize of the array: %d\n", (int)sizeArray[i]);
 				double sec = cpuTimeHeapSort(arrays_tmp[i], sizeArray[i]);
@@ -173,13 +166,13 @@ int main(void)
 			break;
 		case '5':
 			//initTmpArrays(arrays_tmp, arrays_p, sizeArray);
-			for (int i = 0; i<5; i++)
+			for (int i = 0; i<6; i++)
 			{
 				memcpy(arrays_tmp[i], arrays_p[i], sizeArray[i] * sizeof(int));
 			}
 			printf("----------------------------------------\n");
 			printf("GSort\n");
-			for (i = 0; i < 2; i++)
+			for (i = 0; i < 6; i++)
 			{
 				printf("\tSize of the array: %d\n", (int)sizeArray[i]);
 				double sec = cpuTimeGSort(arrays_tmp[i], sizeArray[i]);
@@ -192,9 +185,7 @@ int main(void)
 		default:
 			break;
 		}
-	}	
-	free(arrays_p);
-	free(arrays_tmp);
+	}
 	return 0;
 }
 
