@@ -4,14 +4,13 @@
 * ========================================================================= */
 
 #include <stddef.h>
-#include "QuickSort.h"
-#include "RandomizedQuickSort.h"
+#include "Sort.h"
 #include <stdlib.h>
 
 
 void RandomizedQuickSort(int* array, int left, int right)
 {
-	unsigned int mid = 0;
+	int mid = 0;
 	if (right>left)
 	{
 		mid = RandomizedPartition(array, left, right);

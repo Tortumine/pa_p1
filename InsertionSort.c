@@ -4,7 +4,7 @@
 * ========================================================================= */
 
 #include <stddef.h>
-#include "InsertionSort.h"
+#include "Sort.h"
 
 
 void InsertionSort(int* array, size_t length)
