@@ -7,7 +7,7 @@
 
 #include <stddef.h>
 
-
+void Swap(int* array, int a, int b);
 
 /* ------------------------------------------------------------------------- *
 * InsertionSort an array of integers.
@@ -46,7 +46,7 @@ int RandomizedPartition(int* array, int left, int right);
 * array        The array to sort
 * length       Number of elements in the array
 * ------------------------------------------------------------------------- */
-void HeapSort(int* array, size_t  lenght);
+void HeapSort(int* array, int lenght);
 void BuildMaxHeap(int* array, int lenght);
 void MaxHeapify(int* array, int heapsize, int i);
 
@@ -57,6 +57,6 @@ void MaxHeapify(int* array, int heapsize, int i);
 * array        The array to sort
 * length       Number of elements in the array
 * ------------------------------------------------------------------------- */
-void GSort(int* array, int left, int right);
+void GSort(int* array, int p, int r);
 
 #endif // !_SORT_H_
