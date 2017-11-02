@@ -67,6 +67,12 @@ void clearBuffer()
 		c = getchar();
 	}
 }
+void Swap(int* array, int a, int b)
+{
+	int tmp = array[a];
+	array[a] = array[b];
+	array[b] = tmp;
+}
 //void initTmpArrays(int* arrays_tmp,int* arrays_p,int* sizeArray)
 //{
 //	for (int i = 0; i<5; i++)
@@ -82,8 +88,8 @@ int main(void)
 {
 	srand((unsigned int) time(NULL));//Use an integer seed to get a fix sequence
 	char tmp;
-	int *arrays_p[6];
-	int *arrays_tmp[6];
+	size_t  *arrays_p[5];
+	int *arrays_tmp[5];
 	int i = 0;
 	size_t sizeArray[6] = { 10,100,1000,10000,100000, 1000000};
 	
@@ -176,7 +182,7 @@ int main(void)
 			{
 				printf("\tSize of the array: %d\n", (int)sizeArray[i]);
 				double sec = cpuTimeGSort(arrays_tmp[i], sizeArray[i]);
-				printf("\t\tCPU Time: %.10f\n", sec);
+				printf("\t\tCPU Time: %.10f\n", sec);				
 			}
 			break;
 		case '0':

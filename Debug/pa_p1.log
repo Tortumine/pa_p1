@@ -1,0 +1,15 @@
+﻿  main.c
+main.c(60): warning C4022: 'memcpy' : incompatibilité de pointeur pour le paramètre réel 1
+main.c(60): warning C4022: 'memcpy' : incompatibilité de pointeur pour le paramètre réel 2
+main.c(93): warning C4047: 'fonction' : les niveaux d'indirection de 'int *' et de 'int *[5]' sont différents
+main.c(93): warning C4024: 'initTmpArrays' : types différents pour le paramètre formel et réel 1
+main.c(93): warning C4024: 'initTmpArrays' : types différents pour le paramètre formel et réel 2
+main.c(106): warning C4047: 'fonction' : les niveaux d'indirection de 'int *' et de 'int *[5]' sont différents
+main.c(106): warning C4024: 'initTmpArrays' : types différents pour le paramètre formel et réel 1
+main.c(106): warning C4024: 'initTmpArrays' : types différents pour le paramètre formel et réel 2
+main.c(118): warning C4047: 'fonction' : les niveaux d'indirection de 'int *' et de 'int *[5]' sont différents
+main.c(118): warning C4024: 'initTmpArrays' : types différents pour le paramètre formel et réel 1
+main.c(118): warning C4024: 'initTmpArrays' : types différents pour le paramètre formel et réel 2
+main.c(88): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.16299.0\ucrt\stdio.h(1272): note: voir la déclaration de 'scanf'
+  pa_p1.vcxproj -> E:\Google Drive\ULG\M0\git\pa_p1\Debug\pa_p1.exe

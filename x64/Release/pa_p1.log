@@ -1,0 +1,3 @@
+﻿  main.c
+main.c(100): warning C4133: '=' : types incompatibles - de 'int *' à 'size_t *'
+  pa_p1.vcxproj -> E:\Google Drive\ULG\M0\git\pa_p1\x64\Release\pa_p1.exe

@@ -7,16 +7,16 @@
 #include <stddef.h>
 #include "Sort.h"
 
-void GSort(int* array, int p, int r)
+void GSort(int* array, int left, int right)
 {
 	int tmp;
-	if (p >= r)return;
-	GSort(array, p, r - 1);
-	if (array[r - 1] > array[r])
+	if (left >= right)return;
+	GSort(array, left, right - 1);
+	if (array[right - 1] > array[right])
 	{
-		tmp = array[r - 1];
-		array[r - 1] = array[r];
-		array[r] = tmp;
-		GSort(array, p, r - 1);
+		tmp = array[right - 1];
+		array[right - 1] = array[right];
+		array[right] = tmp;
+		GSort(array, left, right - 1);
 	}
 }

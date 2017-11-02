@@ -41,7 +41,7 @@ void BuildMaxHeap(int* array, int lenght)
 		MaxHeapify(array, lenght-1, i);
 	}
 }
-void HeapSort(int* array, int lenght)
+void HeapSort(int* array, size_t  lenght)
 {
 	BuildMaxHeap(array, lenght);
 	for (int i = lenght-1; i >= 0; i--)

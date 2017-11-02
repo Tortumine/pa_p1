@@ -33,10 +33,3 @@ int Partition(int* array, int left, int right)
 	Swap(array, i + 1, right);
 	return i+1;
 }
-
-void Swap(int* array, int a, int b)
-{
-	int tmp = array[a];
-	array[a] = array[b];
-	array[b] = tmp;
-}
