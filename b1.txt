@@ -1,0 +1,106 @@
+Bench 1
+InsertionSort
+	Size of the array: 10
+		CPU Time: 0.0000020000
+	Size of the array: 100
+		CPU Time: 0.0000200000
+	Size of the array: 1000
+		CPU Time: 0.0015750000
+	Size of the array: 10000
+		CPU Time: 0.0610960000
+	Size of the array: 100000
+		CPU Time: 5.6600480000
+	Size of the array: 1000000
+		CPU Time: 566.0068670000
+QuickSort
+	Size of the array: 10
+		CPU Time: 0.0000020000
+	Size of the array: 100
+		CPU Time: 0.0000100000
+	Size of the array: 1000
+		CPU Time: 0.0001680000
+	Size of the array: 10000
+		CPU Time: 0.0024450000
+	Size of the array: 100000
+		CPU Time: 0.0404950000
+	Size of the array: 1000000
+		CPU Time: 2.7368580000
+RandomizedQuickSort
+	Size of the array: 10
+		CPU Time: 0.0000030000
+	Size of the array: 100
+		CPU Time: 0.0000090000
+	Size of the array: 1000
+		CPU Time: 0.0001220000
+	Size of the array: 10000
+		CPU Time: 0.0011550000
+	Size of the array: 100000
+		CPU Time: 0.0363640000
+	Size of the array: 1000000
+		CPU Time: 2.7294300000
+HeapSort
+	Size of the array: 10
+		CPU Time: 0.0000040000
+	Size of the array: 100
+		CPU Time: 0.0000250000
+	Size of the array: 1000
+		CPU Time: 0.0003620000
+	Size of the array: 10000
+		CPU Time: 0.0047950000
+	Size of the array: 100000
+		CPU Time: 0.0259190000
+	Size of the array: 1000000
+		CPU Time: 0.2789530000
+Bench 2
+InsertionSort
+	Size of the array: 10
+		CPU Time: 0.0000010000
+	Size of the array: 100
+		CPU Time: 0.0000130000
+	Size of the array: 1000
+		CPU Time: 0.0009940000
+	Size of the array: 10000
+		CPU Time: 0.0607490000
+	Size of the array: 100000
+		CPU Time: 5.6762130000
+	Size of the array: 1000000
+		CPU Time: 566.8323320000
+QuickSort
+	Size of the array: 10
+		CPU Time: 0.0000030000
+	Size of the array: 100
+		CPU Time: 0.0000120000
+	Size of the array: 1000
+		CPU Time: 0.0001760000
+	Size of the array: 10000
+		CPU Time: 0.0027220000
+	Size of the array: 100000
+		CPU Time: 0.0416900000
+	Size of the array: 1000000
+		CPU Time: 2.7324070000
+RandomizedQuickSort
+	Size of the array: 10
+		CPU Time: 0.0000030000
+	Size of the array: 100
+		CPU Time: 0.0000100000
+	Size of the array: 1000
+		CPU Time: 0.0001190000
+	Size of the array: 10000
+		CPU Time: 0.0017410000
+	Size of the array: 100000
+		CPU Time: 0.0391280000
+	Size of the array: 1000000
+		CPU Time: 2.7310650000
+HeapSort
+	Size of the array: 10
+		CPU Time: 0.0000040000
+	Size of the array: 100
+		CPU Time: 0.0000240000
+	Size of the array: 1000
+		CPU Time: 0.0003600000
+	Size of the array: 10000
+		CPU Time: 0.0047790000
+	Size of the array: 100000
+		CPU Time: 0.0272010000
+	Size of the array: 1000000
+		CPU Time: 0.2784650000
