@@ -1,0 +1,140 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+\usepackage{array}
+\usepackage{shortvrb}
+\usepackage{listings}
+\usepackage[fleqn]{amsmath}
+\usepackage{amsfonts}
+\usepackage{fullpage}
+\usepackage{enumerate}
+\usepackage{graphicx}             % import, scale, and rotate graphics
+\usepackage{subfigure}            % group figures
+\usepackage{alltt}
+\usepackage{url}
+\usepackage{indentfirst}
+\usepackage{eurosym}
+\usepackage{amsmath} 
+\usepackage{float}
+\usepackage[french,onelanguage,ruled,vlined]{algorithm2e}
+%\usepackage{algorithm, algpseudocode}
+%\usepackage{tabular}
+\usepackage[utf8]{inputenc}
+\usepackage{algpseudocode}
+
+\renewcommand{\thesubsection}{\thesection.\alph{subsection}}
+\usepackage[table,xcdraw]{xcolor}
+
+\begin{document}
+\begin{titlepage}
+
+   \begin{figure}[htbp]
+      \centering
+      \includegraphics{uliege-logo-couleurs-300.jpg}
+   \end{figure}
+  	
+  	\hfill
+
+	\begin{center}
+		\vfill
+		\textbf{
+		\Huge{INFO2050 - Programmation avancée}}\\
+		\bigskip
+		\huge{Projet 1: Algotithmes de tri}\\
+		\bigskip %saut de ligne
+		\smallskip
+		\Large{Aliaksei Mazurchyk} \\
+		\bigskip
+		\smallskip
+		\large{\today}\\%date
+		\vfill
+		\large{Université de Liège}
+	\end{center}
+\end{titlepage}
+\clearpage
+%\maketitle
+%\tableofcontents
+\clearpage
+
+\section{Algorithmes vus au cours: analyse expérimentale}
+\subsection{Benchmarks}
+\paragraph{Protocole de test}~\\
+Les tests de performance se feront avec la configuration suivante:
+\begin{itemize}
+ \item I5 3570k (4.2GHz)
+ \item Système d'exploitation Fedora 26 64 bits
+ \item Compilateur GCC standard C99
+\end{itemize}  
+Les résultats de ce rapport seront la moyenne établie sur base de 10 test.
+
+\paragraph{Éliminer la variable parasite "Tableau"}~\\
+Afin de mettre tous les algorithmes de tri sur un pied d'égalité, chaque test se fera sur des copies d'un tableau aléatoire initialisé au lancement de l'application. Ce qui permettra de tester uniquement l'algorithmique en éliminant la régénération d'un tableau aléatoire entre chaque tri. La copie de ce tableau se fera au moyen de la fonction \textit{memcpy()}.
+
+\paragraph{Résultats}~\\
+% Please add the following required packages to your document preamble:
+% \usepackage[table,xcdraw]{xcolor}
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[H]
+\centering
+\label{my-label}
+\begin{tabular}{|
+>{\columncolor[HTML]{EFEFEF}}c |r|r|r|r|}
+\hline
+\cellcolor[HTML]{C0C0C0}N & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}InsertionSort} & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}QuickSort(i)} & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}QuickSort(ii)} & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}HeapSort} \\ \hline
+10                        &                                                            &                                                           &                                                            &                                                       \\ \hline
+100                       &                                                            &                                                           &                                                            &                                                       \\ \hline
+1000                      &                                                            &                                                           &                                                            &                                                       \\ \hline
+10000                     &                                                            &                                                           &                                                            &                                                       \\ \hline
+100000                    &                                                            &                                                           &                                                            &                                                       \\ \hline
+1000000                   &                                                            &                                                           &                                                            &                                                       \\ \hline
+\end{tabular}
+\end{table}
+\subsection{Analyse}
+\paragraph{Insertion Sort}~\\
+Le tri pas insertion, dont le code a été fourni est le plus lent des algorithmes testés. Pour un tableau d'un million d'élément il lui près de 10 minutes de temps d'exécution. La complexité observée correspond à la complexité théorique moyenne $ n^{2}$, quand la longueur de tableau est multipliée par 10 le temps d'exécution est multiplié par 100.
+
+\paragraph{Quick Sort}~\\
+Le tri rapide est bien plus performant que le tri par insertion. Pour un tableau de $ 10^{6}$ d'élément il ne lui faut moins de 3 seconde (2.70s). Ce qui correspond à une la complexité moyenne théorique $ n*log(n)$. 
+
+\paragraph{Quick Sort avec pivot aléatoire}~\\
+Cette variante du tri rapide avec pivot aléatoire fournit des résultats très proches du tri standard. L'écart entre les deux est minime et tend à disparaitre quand la taille du tableau augmente ($ 0.157\%$ pour $ n=10^{6}$). La complexité du tri est donc identique au tri rapide classique: $ n*log(n)$.
+\paragraph{Heap Sort}~\\
+Le tri par tas est de loin le plus rapide ici pour les tableaux de grande taille, et ce malgré la complexité théorique moyenne identique au tri rapide. Pour des tailles de tableaux inférieures à $ 10^{5}$, les résultats restent très proches. Mais à partir de $ 10^{6}$ éléments, le HeapSort est 10 fois plus rapide.
+\section{Un nouvel algorithme de tri: GSort}
+\subsection{Validité de l'algorithme}
+Intuitivement GSort semble correct, il parcourt le tableau récursivement et fait un swap quand deux élément consécutifs ne sont pas triés. Après quoi GSort est appelé récursivement sur le sous tableau déjà trié, afin de placer l'élément déplacé à sa place. Il s'apparente donc au tri par insertion mais récursivement.
+\subsection{Analyse approfondie}
+\paragraph{Stable}~\\
+GSort est stable, il déplace les éléments identiques dans l'ordre. La condition \emph{if A[r-1]>A[r]} garanti que deux éléments de même valeur seront placés dans le même ordre. Si deux éléments ont la même valeur le deuxième sera placé juste après le premier. Ainsi les tris précédents sont conservés.
+
+Ce qui donne:
+
+\begin{tabular}{lll}
+   2 & 1a & 1b \\
+   1a & 2 & 1b \\
+   1a & 1b & 2 \\
+\end{tabular}
+\paragraph{En place}~\\
+GSort est en place car les swaps sont exécute directement sur le tableau passé en entré. Le tableau en sortie est le même qu'en entrée et aucun tableau temporaire n'est initialisé.
+\subsection{Complexité dans le meilleur des cas}
+Dans le meilleur des cas la condition de la quatrième ligne n'est jamais vérifiée \emph{if A[r-1]>A[r]}. Ainci la tableau est parcouru récursivement une seule fois. Cela correspond au cas où chaque élément du tableau est plus grand ou égal que son prédécesseur $\rightarrow$ tableau déjà trié.
+\subsection{Benchmarks}
+Les test fournissent les résultats suivants:
+
+\begin{table}[]
+\centering
+\label{my-label}
+\begin{tabular}{ll}
+ &  \\
+ &  \\
+ &  \\
+ &  \\
+ &  \\
+ & 
+\end{tabular}
+\end{table}
+\subsection{Complexité dans le pire des cas}
+
+\subsection{Conclusion}
+
+\end{document}
